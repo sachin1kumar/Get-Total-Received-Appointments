@@ -1,6 +1,6 @@
-package com.book.appointment.bookappointment.repositories;
+package com.total.received.appointments.GetTotalReceivedAppointments.repositories;
 
-import com.book.appointment.bookappointment.model.BookAppointment;
+import com.total.received.appointments.GetTotalReceivedAppointments.model.BookAppointment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

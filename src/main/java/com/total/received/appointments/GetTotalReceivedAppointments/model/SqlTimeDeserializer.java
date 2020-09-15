@@ -1,10 +1,11 @@
-package com.book.appointment.bookappointment.controller;
+package com.total.received.appointments.GetTotalReceivedAppointments.model;
 
-import java.io.IOException;
-import java.sql.Time;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
+
+import java.io.IOException;
+import java.sql.Time;
 
 public class SqlTimeDeserializer extends JsonDeserializer<Time> {
 

@@ -1,8 +1,8 @@
-package com.patient.registration.Patient.registration.microservice.controllers;
+package com.total.received.appointments.GetTotalReceivedAppointments.controllers;
 
-import com.patient.registration.Patient.registration.microservice.model.PatientRegistration;
-import com.patient.registration.Patient.registration.microservice.model.RegistrationResponse;
-import com.patient.registration.Patient.registration.microservice.repositories.PatientDetailsRepository;
+import com.total.received.appointments.GetTotalReceivedAppointments.model.BookAppointment;
+import com.total.received.appointments.GetTotalReceivedAppointments.model.CustomResponse;
+import com.total.received.appointments.GetTotalReceivedAppointments.repositories.BookAppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,19 +11,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 
 @RestController
-@RequestMapping("/patient-registration")
-public class PatientRegistrationRepository {
+@RequestMapping("/total-received-appointments")
+public class TotalReceivedAppointmentsRepository {
 
     @Autowired
-    private PatientDetailsRepository patientDetailsRepository;
+    private BookAppointmentRepository bookAppointmentRepository;
 
-    @RequestMapping(value = "/registerPatient", method = RequestMethod.POST)
-    public ResponseEntity<RegistrationResponse> registerPatient(@RequestBody PatientRegistration patientRegistration) {
-        patientDetailsRepository.save(patientRegistration);
-        RegistrationResponse registrationResponse = new RegistrationResponse();
-        registrationResponse.setPatientId(patientRegistration.getPatient_id());
-        return ResponseEntity.status(HttpStatus.CREATED).body(registrationResponse);
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public ResponseEntity<CustomResponse> getTotalReceivedAppointment(@RequestBody BookAppointment bookAppointment) {
+        List<BookAppointment> list = bookAppointmentRepository.findAll();
+        int count = 0;
+        for (BookAppointment appointment: list) {
+            String dataFromTable = appointment.getAppointment_date().getDate()
+                    +"-"+appointment.getAppointment_date().getMonth()
+                    +"-"+appointment.getAppointment_date().getYear();
+            String dataFromRequest = bookAppointment.getAppointment_date().getDate()
+                    +"-"+bookAppointment.getAppointment_date().getMonth()
+                    +"-"+bookAppointment.getAppointment_date().getYear();
+            if (dataFromTable.equalsIgnoreCase(dataFromRequest)) {
+                count++;
+            }
+        }
+        CustomResponse customResponse = new CustomResponse();
+        customResponse.setTotalRecResponse(count);
+        return ResponseEntity.status(HttpStatus.CREATED).body(customResponse);
     }
 }

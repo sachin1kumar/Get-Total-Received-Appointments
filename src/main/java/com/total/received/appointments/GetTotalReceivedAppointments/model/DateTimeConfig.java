@@ -1,4 +1,4 @@
-package com.book.appointment.bookappointment.controller;
+package com.total.received.appointments.GetTotalReceivedAppointments.model;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

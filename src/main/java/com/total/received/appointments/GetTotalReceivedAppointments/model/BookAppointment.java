@@ -1,6 +1,5 @@
-package com.book.appointment.bookappointment.model;
+package com.total.received.appointments.GetTotalReceivedAppointments.model;
 
-import com.book.appointment.bookappointment.controller.SqlTimeDeserializer;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;

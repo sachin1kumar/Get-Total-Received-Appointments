@@ -1,20 +1,17 @@
 package com.total.received.appointments.GetTotalReceivedAppointments.model;
 
-import java.math.BigInteger;
+public class CustomResponse {
 
-public class RegistrationResponse {
+    private int totalRecResponse;
 
-    private BigInteger patientId;
-
-    public RegistrationResponse() {
+    public CustomResponse() {
     }
 
-    public BigInteger getPatientId() {
-        return patientId;
+    public int getTotalRecResponse() {
+        return totalRecResponse;
     }
 
-    public void setPatientId(BigInteger patientId) {
-        this.patientId = patientId;
+    public void setTotalRecResponse(int totalRecResponse) {
+        this.totalRecResponse = totalRecResponse;
     }
-
 }
