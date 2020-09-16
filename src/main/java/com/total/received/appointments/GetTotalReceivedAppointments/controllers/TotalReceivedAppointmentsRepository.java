@@ -32,7 +32,7 @@ public class TotalReceivedAppointmentsRepository {
             String dataFromRequest = bookAppointment.getAppointment_date().getDate()
                     +"-"+bookAppointment.getAppointment_date().getMonth()
                     +"-"+bookAppointment.getAppointment_date().getYear();
-            if (dataFromTable.equalsIgnoreCase(dataFromRequest)) {
+            if (dataFromTable.equalsIgnoreCase(dataFromRequest) && appointment.getDoctor_id().equals(bookAppointment.getDoctor_id())) {
                 count++;
             }
         }
