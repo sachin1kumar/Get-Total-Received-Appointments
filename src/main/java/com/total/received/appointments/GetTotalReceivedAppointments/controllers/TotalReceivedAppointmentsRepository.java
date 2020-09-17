@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
+import java.math.BigInteger;
 import java.util.List;
 
 
@@ -37,7 +37,7 @@ public class TotalReceivedAppointmentsRepository {
             }
         }
         CustomResponse customResponse = new CustomResponse();
-        customResponse.setTotalRecResponse(count);
+        customResponse.setTotalRecResponse(BigInteger.valueOf(count));
         return ResponseEntity.status(HttpStatus.CREATED).body(customResponse);
     }
 }
